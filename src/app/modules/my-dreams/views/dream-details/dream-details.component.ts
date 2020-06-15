@@ -75,7 +75,7 @@ export class DreamDetailsComponent implements OnInit {
     });
   }
   saveDream() {
-    let accomplished = true;
+    let accomplished = this.dream.goals.length > 0 ? true : false;
     this.dream.goals.forEach(goal => {
       console.log(goal.accomplished);
       if (!goal.accomplished){

@@ -1,6 +1,9 @@
 {
-  "name": "mydreambook",
+  "name": "com.cordova.mydreambook",
+  "displayName": "MyDreamBook",
   "version": "0.0.0",
+  "description": "A simple app that allows you to have a dream notebook everywhere as an html application",
+  "main": "index.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,8 +12,14 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
   "private": true,
   "dependencies": {
+    "cordova-android": "^8.1.0",
     "@angular/animations": "~9.1.11",
     "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.1.11",
@@ -30,6 +39,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "cordova-plugin-whitelist": "^1.3.4",
     "@angular-devkit/build-angular": "~0.901.8",
     "@angular/cli": "~9.1.8",
     "@angular/compiler-cli": "~9.1.11",
@@ -48,5 +58,13 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "android"
+    ]
   }
 }
