@@ -1,0 +1,38 @@
+{
+  "general": {
+    "accept": "Aceptar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "close": "Cerrar",
+    "delete": "Eliminar",
+    "name": "Nombre",
+    "description": "Descripcion",
+    "done": "Hecho",
+    "goals": "Objetivos"
+  },
+  "delete": {
+    "title": "¿Desea eliminar su sueño?",
+    "confirmation-message": "Esto eliminara su sueño y no puede deshacerse"
+  },
+  "recover": {
+    "title": "Importar o Exportar Datos",
+    "link-text": "Recuperar o Exportar Datos",
+    "export-data": "Exportar Datos",
+    "import-data": "Importar Datos"
+  },
+  "dreams": {
+    "errors": {
+      "dream-already-exist": "El sueño que intentas crear ya existe"
+    },
+    "messages": {
+      "dream-created": "Sueño creado satisfactoriamente",
+      "dream-deleted": "Tu sueño ha sido eliminado",
+      "dream-saved": "Tu sueño ha sido guardado"
+    },
+    "title": "Mi Lista de Sueños",
+    "my-dream-details": "Detalles de Mi Sueño",
+    "new-dream-text": "Añade tu sueño aqui",
+    "your-dream-title": "Titulo de tu sueño",
+    "add-new-goal": "Añadir nuevo Objetivo"
+  }
+}

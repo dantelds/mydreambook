@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-left">
+        <button mat-button matSuffix mat-icon-button aria-label="Add" (click)="goBack()" >
+          <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+        {{ 'recover.title' | translate }}
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+<div class="container">
+  <div class="row border-bottom pt-3 pb-3">
+    <div class="col-12 text-center">
+      <input
+        style="display: none"
+        type="file" (change)="onFileChanged($event)"
+        #fileInput>
+      <a class="btn btn-dark" href="#" role="button" [href]="dataToExport" download="data.json">{{ 'recover.export-data' | translate }}</a>
+      <button  class="btn btn-secondary ml-2" (click)="fileInput.click()">{{ 'recover.import-data' | translate }}</button>
+    </div>
+  </div>
+</div>

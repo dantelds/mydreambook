@@ -1,0 +1,38 @@
+{
+  "general": {
+    "accept": "Accept",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "delete": "Delete",
+    "name": "Name",
+    "description": "Description",
+    "done": "Done",
+    "goals": "Goals"
+  },
+  "delete": {
+    "title": "Delete your dream?",
+    "confirmation-message": "This will delete your dream and cannot be undone."
+  },
+  "recover": {
+    "title": "Import or Export DATA",
+    "link-text": "Recover or Export Data",
+    "export-data": "Export Data",
+    "import-data": "Import Data"
+  },
+  "dreams": {
+    "errors": {
+      "dream-already-exist": "the dream you are trying to create already exists"
+    },
+    "messages": {
+      "dream-created": "dream created successfully",
+      "dream-deleted": "Your dream have been deleted",
+      "dream-saved": "Your dream have been saved"
+    },
+    "title": "My Dreams List",
+    "my-dream-details": "My Dream Details",
+    "new-dream-text": "Add your dream here",
+    "your-dream-title": "Your dream title",
+    "add-new-goal": "Add new goal"
+  }
+}

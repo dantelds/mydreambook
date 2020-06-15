@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="text-center">
+  <div class="container">
+    <span class="text-center">{{ 'dreams.title' | translate }}</span>
+  </div>
+</mat-toolbar>
+<div class="container">
+  <div class="row mt-1">
+    <div class="col-12 text-right">
+      <mat-form-field class="example-form-field">
+        <mat-label>{{ 'dreams.new-dream-text' | translate }}</mat-label>
+        <input matInput type="text" [(ngModel)]="dream" (keyup.enter)="addDream()">
+        <button mat-button *ngIf="dream" matSuffix mat-icon-button aria-label="Add" (click)="addDream()" >
+          <mat-icon>note_add</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <mat-selection-list>
+        <mat-list-option *ngFor="let dream of dreams" [selected]="dream.accomplished" (click)="openDreamsDetail(dream)" class="border-bottom">
+          {{dream.name}}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </div>
+  <div class="row mt-2 pt-2">
+    <div class="col-12 text-center">
+      <a class="btn btn-dark ml-2" routerLink="/recover">{{ 'recover.link-text' | translate }}</a>
+    </div>
+  </div>
+</div>

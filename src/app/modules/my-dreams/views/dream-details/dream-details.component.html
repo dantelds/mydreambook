@@ -1,0 +1,75 @@
+<mat-toolbar color="primary" class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-left">
+        <button mat-button matSuffix mat-icon-button aria-label="Add" (click)="goBack()" >
+          <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+        {{ 'dreams.my-dream-details' | translate }}
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+<div class="container">
+  <div class="row mt-1">
+    <div class="col-12">
+      <mat-card class="dream-card">
+        <div class="form-group border-bottom pb-3">
+          <label for="dreamName">{{ 'dreams.your-dream-title' | translate }}</label>
+          <input type="text" class="form-control" id="dreamName"
+                 placeholder="{{ 'dreams.your-dream-title' | translate }}" [(ngModel)]="dream.name"/>
+        </div>
+        <mat-card-content>
+          <div class="row mt-1">
+            <div class="col-12 form-group">
+              <label for="description">{{ 'general.description' | translate }}:</label>
+                <textarea class="w-100 form-control" id="description"  type="text" [(ngModel)]="dream.description">
+                </textarea>
+            </div>
+          </div>
+          <div>
+            <table class="table" *ngIf="dream.goals && dream.goals.length > 0">
+              <thead>
+              <tr>
+                <th scope="col">{{ 'general.goals' | translate }}</th>
+                <th scope="col">{{ 'general.done' | translate }}</th>
+                <th scope="col">{{ 'general.delete' | translate }}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let goal of dream.goals; let i = index">
+                <td>{{goal.name}}</td>
+                <td class="pt-4">
+                  <mat-checkbox  #checkbox [(ngModel)]="goal.accomplished" (click)="setGoalStatus(i, checkbox.checked)">
+                  </mat-checkbox>
+                </td>
+                <td>
+                  <button mat-button matSuffix mat-icon-button aria-label="Delete" (click)="deleteStep(i)" >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row mt-1">
+            <div class="col-12">
+              <mat-form-field class="example-form-field">
+                <mat-label>{{ 'dreams.add-new-goal' | translate }}</mat-label>
+                <input matInput type="text" [(ngModel)]="newStepText" (keyup.enter)="addStep()" (blur)="addStep()"/>
+                <button mat-button *ngIf="newStepText && newStepText.length > 3"
+                        matSuffix mat-icon-button aria-label="Add" (click)="addStep()" >
+                  <mat-icon>note_add</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button  class="btn btn-dark" (click)="saveDream()">{{ 'general.save' | translate }}</button>
+          <button  class="btn btn-danger ml-2" (click)="openDialog()">{{ 'general.delete' | translate }}</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
