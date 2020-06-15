@@ -13,8 +13,12 @@ export class MyDreamsService extends LocalStorageService  {
   dreams: DreamModel[] = [];
   constructor(translate: TranslateService) {
     super();
+    this.setInitialData();
     this.translate = translate;
-    this.dreams = this.getDreams();
+  }
+  private setInitialData(): void{
+    const dreams = this.getDreams();
+    this.dreams = dreams ? dreams : [];
   }
   private saveDreams(): void{
     this.set('dreams', this.dreams);

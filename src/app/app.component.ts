@@ -35,7 +35,9 @@ export class AppComponent{
       duration: 5000,
       panelClass: response.type === TYPE.ERROR ? 'snackbar-error' : 'snackbar-message'
     };
-    this.snackBar.open(response.message, 'close', config);
+    this.translate.get('general.close').subscribe((message) => {
+      this.snackBar.open(response.message, message, config);
+    });
   }
   onSendMessage(message: MessageModel){
     this.openSnackBar(message);
