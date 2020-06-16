@@ -4,6 +4,7 @@ import {MessageModel, TYPE} from '../../../shared/models/message.model';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
 import {LocalStorageService} from '../../../shared/services/localstorage.service';
+import { plainToClass } from 'class-transformer';
 
 @Injectable({
   providedIn: 'root'
@@ -27,14 +28,15 @@ export class MyDreamsService extends LocalStorageService  {
     const dreams: DreamModel[] = data as DreamModel[];
     this.set('dreams', dreams);
   }
-  getDreams(): [DreamModel] {
-    return this.get('dreams');
+  getDreams(): DreamModel[] {
+    return this.get('dreams') as DreamModel[];
   }
   dreamAlreadyExists(name: string): boolean{
     return this.dreams.some(dream => dream.name === name);
   }
   getDream(id: number): DreamModel{
-    return this.dreams.find(dream => dream.id === id);
+    const dreamObject = this.dreams.find(dream => dream.id === id);
+    return plainToClass(DreamModel, dreamObject);
   }
   removeDream(id: number): Observable<MessageModel>{
     return new Observable((observer) => {

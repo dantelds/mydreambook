@@ -3,14 +3,13 @@ import { MyDreamsService } from '../../services/my-dreams.service';
 import { DreamModel } from '../../models/dream.model';
 import { Router } from '@angular/router';
 import { MessagesService } from '../../../../shared/services/messages.service';
-import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 @Component({
   selector: 'app-dreams-list',
   templateUrl: './dreams-list.component.html',
   styleUrls: ['./dreams-list.component.styl']
 })
 export class DreamsListComponent implements OnInit {
-  dreams: [DreamModel];
+  dreams: DreamModel[];
   dream: string;
   constructor(private service: MyDreamsService,
               private router: Router,
@@ -35,6 +34,4 @@ export class DreamsListComponent implements OnInit {
     console.log('i´m going to display this', dream);
     this.router.navigate(['/details', {id: dream.id}]);
   }
-
-
 }
