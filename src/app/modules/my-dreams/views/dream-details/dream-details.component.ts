@@ -15,14 +15,13 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class DreamDetailsComponent implements OnInit {
   dream: DreamModel;
-  newStepText: string;
   constructor(private service: MyDreamsService, private route: ActivatedRoute,
               private location: Location, private router: Router,
               private dialog: MatDialog,
               private messagesService: MessagesService) {}
 
 
-  openDialog() {
+  openDialog(): void{
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -30,7 +29,6 @@ export class DreamDetailsComponent implements OnInit {
       dream: this.dream
     };
     const dialogRef = this.dialog.open(DeleteComponent, dialogConfig);
-
     dialogRef.afterClosed().subscribe(
       action => {
         if (action){
@@ -44,7 +42,7 @@ export class DreamDetailsComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id'), 0);
     const dream: DreamModel = this.service.getDream(id);
     if (!dream){
-      this.goBack();
+      this.goToList();
     }
     else{
       this.dream = dream;
@@ -52,41 +50,31 @@ export class DreamDetailsComponent implements OnInit {
     }
   }
   setGoalStatus(index: number, checked: boolean): void{
-    this.dream.goals[index].accomplished = checked;
+    this.dream.setGoalStatus(index, checked);
   }
-  deleteStep(index: number): void{
-    this.dream.goals.splice(index, 1);
+  deleteGoal(index: number): void{
+    this.dream.deleteGoal(index);
   }
-  addStep(): void{
-    if (this.newStepText && this.newStepText.length > 3){
-      const newStep = new GoalsModel(this.newStepText);
-      this.dream.goals.push(newStep);
-      this.newStepText = '';
-      console.log(this.dream);
+  addGoal(goal: HTMLInputElement): void{
+    if (goal.value && goal.value.length > 3){
+      this.dream.addGoal(goal.value);
+      goal.value = '';
     }
   }
-  goBack() {
+  goToList() {
     this.router.navigate(['list']);
   }
   removeDream(){
     this.service.removeDream(this.dream.id).subscribe((response) => {
       this.messagesService.emitMessage(response);
-      this.goBack();
+      this.goToList();
     });
   }
-  saveDream() {
-    let accomplished = this.dream.goals.length > 0 ? true : false;
-    this.dream.goals.forEach(goal => {
-      console.log(goal.accomplished);
-      if (!goal.accomplished){
-        accomplished = false;
-      }
-    });
-    this.dream.accomplished = accomplished;
-    console.log('i´m going to save this', this.dream);
+  saveDream(): void{
+    this.dream.setAccomplishedStatus();
     this.service.saveDream(this.dream).subscribe((response) => {
       this.messagesService.emitMessage(response);
-      this.goBack();
+      this.goToList();
     });
   }
 }

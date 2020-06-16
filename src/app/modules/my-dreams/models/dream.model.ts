@@ -11,6 +11,21 @@ export class DreamModel{
     this.description = '';
     this.goals = [];
   }
+  public deleteGoal(index: number): void{
+    this.goals.splice(index, 1);
+  }
+  public setGoalStatus(index: number, checked: boolean): void{
+    this.goals[index].setGoalStatus(checked);
+  }
+  public setAccomplishedStatus(){
+    this.accomplished = this.goals.length > 0 &&  !this.goals.some(goal => {
+      return goal.accomplished === false;
+    });
+    debugger;
+  }
+  public addGoal(goalName: string): void{
+    this.goals.push(new GoalsModel(goalName));
+  }
 }
 export class GoalsModel{
   public name: string;
@@ -18,5 +33,8 @@ export class GoalsModel{
   constructor(name: string) {
     this.name = name;
     this.accomplished = false;
+  }
+  public setGoalStatus(checked: boolean): void{
+    this.accomplished = checked;
   }
 }
