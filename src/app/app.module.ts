@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {MessagesService} from './shared/services/messages.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ import {MessagesService} from './shared/services/messages.service';
       }
     })
   ],
-  providers: [MessagesService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
