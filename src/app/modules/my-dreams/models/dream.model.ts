@@ -21,7 +21,6 @@ export class DreamModel{
     this.accomplished = this.goals.length > 0 &&  !this.goals.some(goal => {
       return goal.accomplished === false;
     });
-    debugger;
   }
   public addGoal(goalName: string): void{
     this.goals.push(new GoalsModel(goalName));
