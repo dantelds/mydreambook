@@ -18,7 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { RecoverComponent } from './views/recover/recover.component';
-import { DeleteComponent} from './views/delete/delete.component';
+import { DeleteDialogComponent} from './views/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { DeleteComponent} from './views/delete/delete.component';
     DreamDetailsComponent,
     RecoverComponent,
     DreamsListComponent,
-    DeleteComponent
+    DeleteDialogComponent
   ],
   imports: [
     CommonModule,

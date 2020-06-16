@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MyDreamsService } from '../../services/my-dreams.service';
-import { DreamModel, GoalsModel } from '../../models/dream.model';
+import { DreamModel } from '../../models/dream.model';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { MessagesService } from '../../../../shared/services/messages.service';
-import { DeleteComponent } from '../delete/delete.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
@@ -28,7 +28,7 @@ export class DreamDetailsComponent implements OnInit {
     dialogConfig.data = {
       dream: this.dream
     };
-    const dialogRef = this.dialog.open(DeleteComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
       action => {
         if (action){

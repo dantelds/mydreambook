@@ -10,7 +10,7 @@
     "done": "Hecho",
     "goals": "Objetivos"
   },
-  "delete": {
+  "delete-dialog": {
     "title": "¿Desea eliminar su sueño?",
     "confirmation-message": "Esto eliminara su sueño y no puede deshacerse"
   },

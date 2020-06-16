@@ -10,7 +10,7 @@
     "done": "Done",
     "goals": "Goals"
   },
-  "delete": {
+  "delete-dialog": {
     "title": "Delete your dream?",
     "confirmation-message": "This will delete your dream and cannot be undone."
   },
