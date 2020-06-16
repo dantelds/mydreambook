@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {DreamModel} from '../models/dream.model';
+import {DreamModel, GoalsModel} from '../models/dream.model';
 import {MessageModel, TYPE} from '../../../shared/models/message.model';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
@@ -36,6 +36,9 @@ export class MyDreamsService extends LocalStorageService  {
   }
   getDream(id: number): DreamModel{
     const dreamObject = this.dreams.find(dream => dream.id === id);
+    dreamObject.goals.forEach((goal, index, goals) => {
+      goals[index] = plainToClass(GoalsModel, goal);
+    });
     return plainToClass(DreamModel, dreamObject);
   }
   removeDream(id: number): Observable<MessageModel>{
